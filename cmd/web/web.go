@@ -1,6 +1,7 @@
 package web
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 	"strconv"
@@ -10,7 +11,8 @@ import (
 
 func HelloParam(w http.ResponseWriter, r *http.Request) {
 	param := mux.Vars(r)["PARAM"]
-	w.Write([]byte(param))
+	ans := fmt.Sprintf("Hello, %s!", param)
+	w.Write([]byte(ans))
 }
 
 func Bad(w http.ResponseWriter, r *http.Request) {
